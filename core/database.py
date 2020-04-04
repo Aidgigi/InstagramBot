@@ -42,6 +42,9 @@ class mainDB:
             mode = Column(Integer)
             premium = Column(Boolean)
 
+            def repr(self):
+                return f'SubCon Model {self.id}'
+
         #a log helpful in making sure that we only post once
         class postLog(self.Base):
             __tablename__ = "BOT_POST_LOG"
@@ -51,3 +54,6 @@ class mainDB:
             subreddit = Column(String)
             instagramAccount = Column(String)
             time = Column(Integer)
+
+            def repr(self):
+                return f'postLog Model {self.subreddit}'
