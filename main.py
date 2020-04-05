@@ -4,3 +4,5 @@ import time
 """The main function, basically does everything"""
 def main():
     db.createTabs()
+
+main()
