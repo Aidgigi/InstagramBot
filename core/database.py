@@ -66,5 +66,7 @@ class mainDB:
             #checking to make sure that the tables dont exist, if a table doesnt exist, it's made
             Base.metadata.create_all(db_engine, Base.metadata.tables.values(),checkfirst=True)
 
+            print('tables created')
+
 
     db = mainDB(constants.DATABASE_URL)
