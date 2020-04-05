@@ -7,7 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import time
 import operator
 import json
-import core.constants    #the module containing all of the various credentials we may need
+import core.constants as constants #the module containing all of the various credentials we may need
 
 
 """This class represents the main db, and everything it may need to do"""
@@ -57,3 +57,14 @@ class mainDB:
 
             def repr(self):
                 return f'postLog Model {self.subreddit}'
+
+        #a function for creating the tables
+        def createTabs(self):
+            #reflecting the db locally
+            self.meta.reflect(bind=self.engine)
+
+            #checking to make sure that the tables dont exist, if a table doesnt exist, it's made
+            Base.metadata.create_all(db_engine, Base.metadata.tables.values(),checkfirst=True)
+
+
+    db = mainDB(constants.DATABASE_URL)
