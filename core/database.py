@@ -29,44 +29,44 @@ class mainDB:
         """Coming up are some very important models that represent the different
         tables present in our db"""
 
-        #our sub/account connection table
-        class accntCon(self.Base):
-            __tablename__ = "SUB_ACCOUNT_CONNECTION"
+    #our sub/account connection table
+    class accntCon(self.Base):
+        __tablename__ = "SUB_ACCOUNT_CONNECTION"
 
-            id = Column(Integer,
+        id = Column(Integer,
                         primary_key = True)
-            subreddit = Column(String)
-            instagramAccount = Column(String)
-            owner = Column(String)
-            postCount = Column(Integer)
-            mode = Column(Integer)
-            premium = Column(Boolean)
+        subreddit = Column(String)
+        instagramAccount = Column(String)
+        owner = Column(String)
+        postCount = Column(Integer)
+        mode = Column(Integer)
+        premium = Column(Boolean)
 
-            def repr(self):
-                return f'SubCon Model {self.id}'
+        def repr(self):
+            return f'SubCon Model {self.id}'
 
-        #a log helpful in making sure that we only post once
-        class postLog(self.Base):
-            __tablename__ = "BOT_POST_LOG"
+    #a log helpful in making sure that we only post once
+    class postLog(self.Base):
+        __tablename__ = "BOT_POST_LOG"
 
-            submissionId = Column(String)
-            instagramPostId = Column(String, primary_key = True)
-            subreddit = Column(String)
-            instagramAccount = Column(String)
-            time = Column(Integer)
+        submissionId = Column(String)
+        instagramPostId = Column(String, primary_key = True)
+        subreddit = Column(String)
+        instagramAccount = Column(String)
+        time = Column(Integer)
 
-            def repr(self):
-                return f'postLog Model {self.subreddit}'
+        def repr(self):
+            return f'postLog Model {self.subreddit}'
 
-        #a function for creating the tables
-        def createTabs(self):
-            #reflecting the db locally
-            self.meta.reflect(bind = self.engine)
+    #a function for creating the tables
+    def createTabs(self):
+        #reflecting the db locally
+        self.meta.reflect(bind = self.engine)
 
-            #checking to make sure that the tables dont exist, if a table doesnt exist, it's made
-            Base.metadata.create_all(db_engine, Base.metadata.tables.values(),checkfirst=True)
+        #checking to make sure that the tables dont exist, if a table doesnt exist, it's made
+        Base.metadata.create_all(db_engine, Base.metadata.tables.values(),checkfirst=True)
 
-            print('tables created')
+        print('tables created')
 
 
 db = mainDB(constants.DATABASE_URL)
