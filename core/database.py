@@ -69,4 +69,4 @@ class mainDB:
             print('tables created')
 
 
-    db = mainDB(core.constants.DATABASE_URL)
+db = mainDB(core.constants.DATABASE_URL)
