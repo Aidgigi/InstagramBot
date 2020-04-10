@@ -4,3 +4,4 @@ praw==6.5.1				# base package to run
 sqlalchemy
 psycopg2
 InstagramApi
+pyimgur
