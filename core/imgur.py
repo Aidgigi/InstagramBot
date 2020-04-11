@@ -92,8 +92,8 @@ class imgur:
 
 #Making a test instance
 
-id = '***REMOVED***'
-secret = '***REMOVED***'
+id = 'REDACTED'
+secret = 'REDACTED'
 
 
 im = imgur(id, secret)
