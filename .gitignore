@@ -1,0 +1,9 @@
+#compiled shit
+__pycache__/*
+*.py[cod]
+
+#logs
+pip-log.txt
+
+#venv
+venv/*
