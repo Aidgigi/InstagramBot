@@ -7,3 +7,6 @@ pip-log.txt
 
 #venv
 venv/*
+
+#passwords
+passwords.txt
