@@ -1,44 +1,99 @@
 import requests
-import pyimgur
+import asyncio
+import json
+#import constants
 #import constants
 
 class imgur:
-    def __init__(self, client_id, client_secret, refresh_token):
+    def __init__(self, client_id, client_secret):
         self.client_id = client_id
         self.client_secret = client_secret
-        self.refresh_token = refresh_token
-
-        #I know, wrapping an object in an object is stupid,
-        #but I'm doing this keep the code clean. You should honestly thank me.
-        self.imgurInstance = pyimgur.Imgur(self.client_id, client_secret = self.client_secret, refresh_token = self.refresh_token)
 
 
     #i mean, this function name should be pretty self-explanitory
-    def uploadImage(self, url, title, description = None):
+    async def uploadImage(self, url, title, description = None):
+        #adding headers and making a request with the data we have
+        headers = {"Authorization": "Client-ID {}".format(self.client_id)}
+        response = requests.post(
+        'https://api.imgur.com/3/upload',
+        headers = headers,
+        data = {
+            'image': url,
+            'type': 'url',
+            'title': title,
+            'description': description
+        }
+        )
 
-        image = self.imgurInstance.upload_image(url = url, title = title, description = description)
+        #cleaning and managing the data we get back
+        response.raise_for_status()
+        jsonData = response.json()
+        if 'data' in jsonData and 'link' in jsonData['data']:
+            return jsonData['data']
 
-        return image
+        else:
+            print('[IMGUR] IMAGE UPLOAD FAILED')
 
 
     def uploadAlbum(self, urls, title, description = None):
+        #uploading the images and keeping track of their delete hashes
+        imageHashes = []
+        iteration = 0
 
-        #i just need this to do a county thing
-        imageNum = 0
-        imageIDs = []
+        #predefining headers because we need them
+        headers = {"Authorization": "Client-ID {}".format(self.client_id)}
 
-
-
+        #iterating through our urls
         for image in urls:
-            imageNum += 1
-            image = self.imgurInstance.upload_image(url = image, title = f'Image number {imageNum} of album "{title}"')
-            imageIDs.append(image.id)
+            iteration += 1
+            #cool title thing
+            imageTitle = f"Image number {iteration} of album {title}"
 
-        #making an album
-        album = self.imgurInstance.create_album(title = title, description = description, images = imageIDs)
+            response = requests.post(
+            'https://api.imgur.com/3/upload',
+            headers = headers,
+            data = {
+                'image': image,
+                'type': 'url',
+                'title': imageTitle,
+            }
+            )
 
-        #finally, adding these images to the album
-        #album.add_images(imageIDs)
+            #cleaning and managing the data we get back
+            response.raise_for_status()
+            jsonData = response.json()
+            if 'data' in jsonData and 'link' in jsonData['data']:
+                imageHashes.append(jsonData['data']['deletehash'])
 
-        #for some minor testing
-        return album
+            else:
+                print(f"[IMGUR] UPLOAD FAILED ON IMAGE {iteration} OF ALBUM {title}")
+
+
+        #now we create the album and add our images
+        response = requests.post(
+        'https://api.imgur.com/3/album',
+        headers = headers,
+        data = {
+            'deletehashes[]': imageHashes,
+            'title': title,
+            'description': description,
+            'cover': imageHashes[0]
+        }
+        )
+
+        #cleaning and managing the data we get back
+        response.raise_for_status()
+        jsonData = response.json()
+        if 'id' in jsonData:
+            return jsonData['id']
+
+        else:
+            print('[IMGUR] ALBUM UPLOAD FAILED')
+
+#Making a test instance
+
+id = '***REMOVED***'
+secret = '***REMOVED***'
+
+
+im = imgur(id, secret)
