@@ -63,7 +63,7 @@ class mainDB:
         self.meta.reflect(bind = self.engine)
 
         #checking to make sure that the tables dont exist, if a table doesnt exist, it's made
-        self.Base.metadata.create_all(self.engine, self.Base.metadata.tables.values(),checkfirst=True)
+        self.Base.metadata.create_all(self.engine, self.Base.metadata.tables.values(), checkfirst = True)
 
         print('tables created')
 
