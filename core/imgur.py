@@ -35,6 +35,7 @@ class imgur:
             print('[IMGUR] IMAGE UPLOAD FAILED')
 
 
+    #this function creates an album, and uploads each url from the url param
     def uploadAlbum(self, urls, title, description = None):
         #uploading the images and keeping track of their delete hashes
         imageHashes = []
