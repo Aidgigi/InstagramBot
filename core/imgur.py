@@ -4,7 +4,7 @@ import json
 #import constants
 #import constants
 
-class imgur:
+class Imgur:
     def __init__(self, client_id, client_secret):
         self.client_id = client_id
         self.client_secret = client_secret
@@ -97,4 +97,4 @@ id = 'REDACTED'
 secret = 'REDACTED'
 
 
-im = imgur(id, secret)
+im = Imgur(id, secret)
