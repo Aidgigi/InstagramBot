@@ -21,3 +21,9 @@ class InstaAPI:
 
         if response['status'] == 'ok':
             return response['user']['pk']
+
+
+    #this function checks if there are any new images from a given account
+    #and if so, uploads that image and returns the imgur URL
+    def getImage(self, conn_id, user_id):
+        print('thing')
