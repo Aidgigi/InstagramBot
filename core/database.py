@@ -36,6 +36,7 @@ class mainDB:
             id = Column(Integer, primary_key = True)
             subreddit = Column(String)
             instagramAccount = Column(String)
+            previousPost = Column(String)
             owner = Column(String)
             postCount = Column(Integer)
             mode = Column(Integer)
