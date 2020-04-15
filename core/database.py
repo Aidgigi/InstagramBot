@@ -7,6 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import time
 import operator
 import json
+import random
 import core.constants as constants #the module containing all of the various credentials we may need
 
 
@@ -67,6 +68,65 @@ class mainDB:
         self.Base.metadata.create_all(self.engine, self.Base.metadata.tables.values(), checkfirst = True)
 
         print('tables created')
+
+    def createConnection(self, subreddit, instaAccount, owner, mode):
+        #reflecting the db locally
+        self.meta.reflect(bind = self.engine)
+
+        #creating a unique ID for the connection
+        idMin = 11111111
+        idMax = 99999999
+        loopState = True
+
+        while loopState == True:
+            randomId = randint(idMin, idMax)
+
+            if len(self.db.query(Users).filter_by(id = int(randomId)).all()) == 0:
+                loopState == False
+
+            else:
+                loopState == True
+
+        #adding the connection
+        self.db.add(accntCon(
+            id = randomId,
+            subreddit = subreddit,
+            instagramAccount = instaAccount,
+            previousPost = 'xxxxxx',
+            owner = owner,
+            postCount = 0,
+            mode = mode,
+            premium = False
+        ))
+
+    def returnConnection(self, conn_id):
+        #reflecting the db locally
+        self.meta.reflect(bind = self.engine)
+
+        self.connectionTables = self.db.query(Users).filter_by(id = int(conn_id)).all()
+
+        if len(self.connectionTables) == 0:
+            return 0
+            print("[DATABASE] Warning! Connection not found!")
+
+        if len(self.connectionTables) >= 2:
+            return 1
+            print("[DATABASE] Fatal Error! Multiple connections share an ID!")
+
+        else:
+            self.connectionTable = self.connectionTables[0]
+
+        #formatting and returning the data
+        return {"connection":{
+            "id": self.userRow.id,
+            "subreddit": self.userRow.subreddit,
+            "instaAccount": self.userRow.instaAccount,
+            "previousPost": self.userRow.previousPost,
+            "owner": self.userRow.owner,
+            "postCount": self.userRow.postCount,
+            "mode": self.userRow.mode,
+            "premium": self.userRow.premium
+        }}
 
 
 db = mainDB(constants.DATABASE_URL)
