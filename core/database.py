@@ -79,7 +79,7 @@ class mainDB:
         loopState = True
 
         while loopState == True:
-            randomId = randint(idMin, idMax)
+            randomId = random.randint(idMin, idMax)
 
             if len(self.db.query(Users).filter_by(id = int(randomId)).all()) == 0:
                 loopState == False
