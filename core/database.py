@@ -7,7 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import time
 import operator
 import json
-import constants #the module containing all of the various credentials we may need
+import core.constants #the module containing all of the various credentials we may need
 
 
 """This class represents the main db, and everything it may need to do"""
