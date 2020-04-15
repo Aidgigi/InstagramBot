@@ -81,7 +81,7 @@ class mainDB:
         while loopState == True:
             randomId = random.randint(idMin, idMax)
 
-            if len(self.db.query(accntCon).filter_by(id = int(randomId)).all()) == 0:
+            if len(self.db.query("SUB_ACCOUNT_CONNECTION").filter_by(id = int(randomId)).all()) == 0:
                 loopState == False
 
             else:
@@ -103,7 +103,7 @@ class mainDB:
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
 
-        self.connectionTables = self.db.query(accntCon).filter_by(id = int(conn_id)).all()
+        self.connectionTables = self.db.query("SUB_ACCOUNT_CONNECTION").filter_by(id = int(conn_id)).all()
 
         if len(self.connectionTables) == 0:
             return 0
