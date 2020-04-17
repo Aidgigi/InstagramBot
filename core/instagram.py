@@ -1,5 +1,5 @@
 from InstagramAPI import InstagramAPI
-import database
+from database import db
 
 #this class makes communicating with instagram api straightforward
 class InstaAPI:
@@ -26,4 +26,5 @@ class InstaAPI:
     #this function checks if there are any new images from a given account
     #and if so, uploads that image and returns the imgur URL
     def getImage(self, conn_id, user_id):
-        print('thing')
+        #getting the pk of the most recent post checked
+        recentPost = db.returnConnection(conn_id)

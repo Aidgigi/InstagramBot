@@ -67,11 +67,12 @@ class mainDB:
         #checking to make sure that the tables dont exist, if a table doesnt exist, it's made
         self.Base.metadata.create_all(self.engine, self.Base.metadata.tables.values(), checkfirst = True)
 
-        print('tables created')
+        print('[DATABASE] Tables Created!')
 
     def createConnection(self, subreddit, instaAccount, owner, mode):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
+        conTab = Table('SUB_ACCOUNT_CONNECTION', self.meta, autoload = True, autoload_with = self.engine)
 
         #creating a unique ID for the connection
         idMin = 11111111
@@ -81,14 +82,14 @@ class mainDB:
         while loopState == True:
             randomId = random.randint(idMin, idMax)
 
-            if len(self.db.query("SUB_ACCOUNT_CONNECTION").filter_by(id = int(randomId)).all()) == 0:
+            if len(self.db.query(conTab).filter_by(id = int(randomId)).all()) == 0:
                 loopState == False
 
             else:
                 loopState == True
 
         #adding the connection
-        self.db.add(accntCon(
+        self.db.add(conTab(
             id = randomId,
             subreddit = subreddit,
             instagramAccount = instaAccount,
@@ -102,8 +103,9 @@ class mainDB:
     def returnConnection(self, conn_id):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
+        conTab = Table('SUB_ACCOUNT_CONNECTION', self.meta, autoload = True, autoload_with = self.engine)
 
-        self.connectionTables = self.db.query("SUB_ACCOUNT_CONNECTION").filter_by(id = int(conn_id)).all()
+        self.connectionTables = self.db.query(conTab).filter_by(id = int(conn_id)).all()
 
         if len(self.connectionTables) == 0:
             return 0
