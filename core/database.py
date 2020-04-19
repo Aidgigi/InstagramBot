@@ -72,7 +72,7 @@ class mainDB:
     def createConnection(self, subreddit, instaAccount, owner, mode):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
-        class accntCon(self.Base):
+        """class accntCon(self.Base):
             __tablename__ = "SUB_ACCOUNT_CONNECTION"
 
             id = Column(Integer, primary_key = True)
@@ -85,7 +85,7 @@ class mainDB:
             premium = Column(Boolean)
 
             def repr(self):
-                return f'SubCon Model {self.id}'
+                return f'SubCon Model {self.id}'"""
 
         #creating a unique ID for the connection
         idMin = 11111111
