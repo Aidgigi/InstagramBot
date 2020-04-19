@@ -89,10 +89,10 @@ class mainDB:
             randomId = random.randint(idMin, idMax)
 
             if len(self.db.query(conTab).filter_by(id = int(randomId)).all()) == 0:
-                loopState == False
+                loopState = False
 
             if len(self.db.query(conTab).filter_by(id = int(randomId)).all()) != 0:
-                loopState == True
+                loopState = True
 
         #adding the connection
         self.db.add(conTab(
