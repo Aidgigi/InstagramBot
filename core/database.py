@@ -72,7 +72,7 @@ class mainDB:
     def createConnection(self, subreddit, instaAccount, owner, mode):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
-        conTab = Table('SUB_ACCOUNT_CONNECTION', self.meta, autoload = True, autoload_with = self.engine)
+        conTab = Table('SUB_ACCOUNT_CONNECTION', self.meta)
 
         #creating a unique ID for the connection
         idMin = 11111111
@@ -109,7 +109,7 @@ class mainDB:
     def returnConnection(self, conn_id):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
-        conTab = Table('SUB_ACCOUNT_CONNECTION', self.meta, autoload = True, autoload_with = self.engine)
+        conTab = Table('SUB_ACCOUNT_CONNECTION', self.meta)
 
         self.connectionTables = self.db.query(conTab).filter_by(id = int(conn_id)).all()
 
