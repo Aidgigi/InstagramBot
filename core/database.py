@@ -106,6 +106,8 @@ class mainDB:
             premium = False
         ))
 
+        self.db.commit()
+
     def returnConnection(self, conn_id):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
