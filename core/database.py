@@ -79,6 +79,12 @@ class mainDB:
         idMax = 99999999
         loopState = True
 
+        subTable = self.db.query(conTab).filter_by(subreddit = str(subreddit)).all()
+
+        if len(subTable) != 0 and subTable[0].premium == False:
+            print("[DATABASE] Warning! A table has already been added to that subreddit!")
+            return False
+
         while loopState == True:
             randomId = random.randint(idMin, idMax)
 
@@ -120,14 +126,14 @@ class mainDB:
 
         #formatting and returning the data
         return {"connection":{
-            "id": self.userRow.id,
-            "subreddit": self.userRow.subreddit,
-            "instaAccount": self.userRow.instaAccount,
-            "previousPost": self.userRow.previousPost,
-            "owner": self.userRow.owner,
-            "postCount": self.userRow.postCount,
-            "mode": self.userRow.mode,
-            "premium": self.userRow.premium
+            "id": self.connectionTable.id,
+            "subreddit": self.connectionTable.subreddit,
+            "instaAccount": self.connectionTable.instaAccount,
+            "previousPost": self.connectionTable.previousPost,
+            "owner": self.connectionTable.owner,
+            "postCount": self.connectionTable.postCount,
+            "mode": self.connectionTable.mode,
+            "premium": self.connectionTable.premium
         }}
 
 
