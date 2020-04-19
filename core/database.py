@@ -30,34 +30,34 @@ class mainDB:
         """Coming up are some very important models that represent the different
         tables present in our db"""
 
-    #our sub/account connection table
-    class accntCon(self.Base):
-        __tablename__ = "SUB_ACCOUNT_CONNECTION"
+        #our sub/account connection table
+        class accntCon(self.Base):
+            __tablename__ = "SUB_ACCOUNT_CONNECTION"
 
-        id = Column(Integer, primary_key = True)
-        subreddit = Column(String)
-        instagramAccount = Column(String)
-        previousPost = Column(String)
-        owner = Column(String)
-        postCount = Column(Integer)
-        mode = Column(Integer)
-        premium = Column(Boolean)
+            id = Column(Integer, primary_key = True)
+            subreddit = Column(String)
+            instagramAccount = Column(String)
+            previousPost = Column(String)
+            owner = Column(String)
+            postCount = Column(Integer)
+            mode = Column(Integer)
+            premium = Column(Boolean)
 
-        def repr(self):
-            return f'SubCon Model {self.id}'
+            def repr(self):
+                return f'SubCon Model {self.id}'
 
-    #a log helpful in making sure that we only post once
-    class postLog(self.Base):
-        __tablename__ = "BOT_POST_LOG"
+        #a log helpful in making sure that we only post once
+        class postLog(self.Base):
+            __tablename__ = "BOT_POST_LOG"
 
-        submissionId = Column(String)
-        instagramPostId = Column(String, primary_key = True)
-        subreddit = Column(String)
-        instagramAccount = Column(String)
-        time = Column(Integer)
+            submissionId = Column(String)
+            instagramPostId = Column(String, primary_key = True)
+            subreddit = Column(String)
+            instagramAccount = Column(String)
+            time = Column(Integer)
 
-        def repr(self):
-            return f'postLog Model {self.subreddit}'
+            def repr(self):
+                return f'postLog Model {self.subreddit}'
 
     #a function for creating the tables
     def createTabs(self):
@@ -72,14 +72,27 @@ class mainDB:
     def createConnection(self, subreddit, instaAccount, owner, mode):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
-        conTab = Table('SUB_ACCOUNT_CONNECTION', self.meta)
+        class accntCon(self.Base):
+            __tablename__ = "SUB_ACCOUNT_CONNECTION"
+
+            id = Column(Integer, primary_key = True)
+            subreddit = Column(String)
+            instagramAccount = Column(String)
+            previousPost = Column(String)
+            owner = Column(String)
+            postCount = Column(Integer)
+            mode = Column(Integer)
+            premium = Column(Boolean)
+
+            def repr(self):
+                return f'SubCon Model {self.id}'
 
         #creating a unique ID for the connection
         idMin = 11111111
         idMax = 99999999
         loopState = True
 
-        subTable = self.db.query(conTab).filter_by(subreddit = str(subreddit)).all()
+        subTable = self.db.query(accntCon).filter_by(subreddit = str(subreddit)).all()
 
         if len(subTable) != 0 and subTable[0].premium == False:
             print("[DATABASE] Warning! A table has already been added to that subreddit!")
@@ -88,10 +101,10 @@ class mainDB:
         while loopState == True:
             randomId = random.randint(idMin, idMax)
 
-            if len(self.db.query(conTab).filter_by(id = int(randomId)).all()) == 0:
+            if len(self.db.query(accntCon).filter_by(id = int(randomId)).all()) == 0:
                 loopState = False
 
-            if len(self.db.query(conTab).filter_by(id = int(randomId)).all()) != 0:
+            if len(self.db.query(accntCon).filter_by(id = int(randomId)).all()) != 0:
                 loopState = True
 
         #adding the connection
@@ -112,9 +125,22 @@ class mainDB:
     def returnConnection(self, conn_id):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
-        conTab = Table('SUB_ACCOUNT_CONNECTION', self.meta)
+        class accntCon(self.Base):
+            __tablename__ = "SUB_ACCOUNT_CONNECTION"
 
-        self.connectionTables = self.db.query(conTab).filter_by(id = int(conn_id)).all()
+            id = Column(Integer, primary_key = True)
+            subreddit = Column(String)
+            instagramAccount = Column(String)
+            previousPost = Column(String)
+            owner = Column(String)
+            postCount = Column(Integer)
+            mode = Column(Integer)
+            premium = Column(Boolean)
+
+            def repr(self):
+                return f'SubCon Model {self.id}'
+
+        self.connectionTables = self.db.query(accntCon).filter_by(id = int(conn_id)).all()
 
         if len(self.connectionTables) == 0:
             return 0
