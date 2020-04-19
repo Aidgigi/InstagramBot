@@ -91,7 +91,7 @@ class mainDB:
             if len(self.db.query(conTab).filter_by(id = int(randomId)).all()) == 0:
                 loopState == False
 
-            else:
+            if len(self.db.query(conTab).filter_by(id = int(randomId)).all()) != 0:
                 loopState == True
 
         #adding the connection
@@ -107,6 +107,7 @@ class mainDB:
         ))
 
         self.db.commit()
+        print(f"[DATABASE] Message! Table ID {randomId} has been created!")
 
     def returnConnection(self, conn_id):
         #reflecting the db locally
