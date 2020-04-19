@@ -10,4 +10,5 @@ subreddit = 'mytestsubgoaway'
 instaAccount = 'me_ginise'
 owner = 'Aidgigi'
 mode = 0
-db.createConnection(subreddit, instaAccount, owner, mode)
+test = db.createConnection(subreddit, instaAccount, owner, mode)
+print(test)
