@@ -69,6 +69,7 @@ class mainDB:
         self.Base.metadata.create_all(self.engine, self.Base.metadata.tables.values(), checkfirst = True)
 
         print('[DATABASE] Tables Created!')
+        return True
 
     def createConnection(self, subreddit, instaAccount, owner, mode):
         #reflecting the db locally
@@ -97,7 +98,7 @@ class mainDB:
         subTable = self.db.query(accntCon).filter_by(subreddit = str(subreddit)).all()
 
         if len(subTable) != 0 and subTable[0].premium == False:
-            print("[DATABASE] Warning! A table has already been added to that subreddit!")
+            print(f"[DATABASE] Warning! A connection has already been attributed to r/{subreddit}. (Non-premium)")
             return False
 
         while loopState == True:
@@ -122,7 +123,8 @@ class mainDB:
         ))
 
         self.db.commit()
-        print(f"[DATABASE] Message! Table ID {randomId} has been created!")
+        print(f"[DATABASE] Message! Connect with ID {randomId} has been created!")
+        return randomId
 
     def returnConnection(self, conn_id):
         #reflecting the db locally
@@ -145,11 +147,11 @@ class mainDB:
         self.connectionTables = self.db.query(accntCon).filter_by(id = int(conn_id)).all()
 
         if len(self.connectionTables) == 0:
-            return 0
+            return False
             print("[DATABASE] Warning! Connection not found!")
 
         if len(self.connectionTables) >= 2:
-            return 1
+            return False
             print("[DATABASE] Fatal Error! Multiple connections share an ID!")
 
         else:
@@ -166,6 +168,24 @@ class mainDB:
             "mode": self.connectionTable.mode,
             "premium": self.connectionTable.premium
         }}
+
+    def updateTable(self, conn_id, previousPost, postCount):
+        #reflecting the db locally
+        self.meta.reflect(bind = self.engine)
+        class accntCon(self.Base):
+            __tablename__ = "SUB_ACCOUNT_CONNECTION"
+
+            id = Column(Integer, primary_key = True)
+            subreddit = Column(String)
+            instagramAccount = Column(String)
+            previousPost = Column(String)
+            owner = Column(String)
+            postCount = Column(Integer)
+            mode = Column(Integer)
+            premium = Column(Boolean)
+
+            def repr(self):
+                return f'SubCon Model {self.id}'
 
 
 db = mainDB(constants.DATABASE_URL)
