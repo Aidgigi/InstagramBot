@@ -30,6 +30,12 @@ class mainDB:
         """Coming up are some very important models that represent the different
         tables present in our db"""
 
+
+
+    #a function for creating the tables
+    def createTabs(self):
+        #reflecting the db locally
+        self.meta.reflect(bind = self.engine)
         #our sub/account connection table
         class accntCon(self.Base):
             __tablename__ = "SUB_ACCOUNT_CONNECTION"
@@ -59,11 +65,6 @@ class mainDB:
             def repr(self):
                 return f'postLog Model {self.subreddit}'
 
-    #a function for creating the tables
-    def createTabs(self):
-        #reflecting the db locally
-        self.meta.reflect(bind = self.engine)
-
         #checking to make sure that the tables dont exist, if a table doesnt exist, it's made
         self.Base.metadata.create_all(self.engine, self.Base.metadata.tables.values(), checkfirst = True)
 
@@ -72,7 +73,8 @@ class mainDB:
     def createConnection(self, subreddit, instaAccount, owner, mode):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
-        """class accntCon(self.Base):
+        #our sub/account connection table
+        class accntCon(self.Base):
             __tablename__ = "SUB_ACCOUNT_CONNECTION"
 
             id = Column(Integer, primary_key = True)
@@ -85,7 +87,7 @@ class mainDB:
             premium = Column(Boolean)
 
             def repr(self):
-                return f'SubCon Model {self.id}'"""
+                return f'SubCon Model {self.id}'
 
         #creating a unique ID for the connection
         idMin = 11111111
