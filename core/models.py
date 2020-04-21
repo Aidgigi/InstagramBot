@@ -1,7 +1,7 @@
 #importing all of the things we need for the database models
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
-frome core.database import db
+from core.database import db
 
 class accntCon(db.Base):
     __tablename__ = "SUB_ACCOUNT_CONNECTION"
