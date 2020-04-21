@@ -187,5 +187,32 @@ class mainDB:
             def repr(self):
                 return f'SubCon Model {self.id}'
 
+        #getting the connection for the given id
+        self.connectionTables = self.db.query(accntCon).filter_by(id = int(conn_id)).all()
+
+        if len(self.connectionTables) == 0:
+            print(f"[DATABASE] Warning! No connection has been found with ID {conn_id}")
+            return False
+
+        if len(self.connectionTables) >= 2:
+            print(f"[DATABASE] Fatal Error! Multiple connections have been found with ID {conn_id}. Investigation needed!")
+            return False
+
+        if len(self.connectionTable) == 1:
+            self.connectionTable = self.connectionTables[0]
+
+        try:
+            #adding the data to our table
+            self.connectionTable.previousPost = previousPost
+            self.connectionTable.postCount += postCount
+
+            #committing the changes
+            self.db.commit()
+            return self.connectionTable.id
+
+        except Exeption as e:
+            print(f"[DATABASE] Error! {e}!)
+            return False
+
 
 db = mainDB(constants.DATABASE_URL)
