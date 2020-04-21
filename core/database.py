@@ -211,8 +211,42 @@ class mainDB:
             return self.connectionTable.id
 
         except Exeption as e:
-            print(f"[DATABASE] Error! {e}!)
+            print(f"[DATABASE] Error! {e}!")
             return False
+
+    def connectionsExport(self):
+        #need a blank list that we can append and return
+        self.connectionIds = []
+
+        #reflecting the db locally
+        self.meta.reflect(bind = self.engine)
+        class accntCon(self.Base):
+            __tablename__ = "SUB_ACCOUNT_CONNECTION"
+
+            id = Column(Integer, primary_key = True)
+            subreddit = Column(String)
+            instagramAccount = Column(String)
+            previousPost = Column(String)
+            owner = Column(String)
+            postCount = Column(Integer)
+            mode = Column(Integer)
+            premium = Column(Boolean)
+
+            def repr(self):
+                return f'SubCon Model {self.id}'
+
+        #getting every row, appening each row's id, and returning
+        self.connections = self.db.query(accntCon).all()
+
+        if len(self.connections) == 0:
+            print("[DATABASE] Warning! There are no rows present in the system!")
+            return False
+
+        for row in self.connections:
+            self.connectionIds.append(row.id)
+
+        return self.connectionIds
+
 
 
 db = mainDB(constants.DATABASE_URL)
