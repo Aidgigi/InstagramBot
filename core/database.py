@@ -9,7 +9,6 @@ import operator
 import json
 import random
 import core.constants as constants #the module containing all of the various credentials we may need
-from core.models import accntCon, postLog
 
 
 """This class represents the main db, and everything it may need to do"""
@@ -162,3 +161,4 @@ class mainDB:
 
 
 db = mainDB(constants.DATABASE_URL)
+from core.models import accntCon, postLog
