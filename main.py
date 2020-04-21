@@ -11,3 +11,6 @@ owner = "Aidgigi"
 mode = "0"
 newCon = db.createConnection(sub, accnt, owner, mode)
 print(newCon)
+
+for conn in db.connectionsExport():
+    print(conn)
