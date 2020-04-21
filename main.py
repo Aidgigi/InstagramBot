@@ -6,7 +6,7 @@ import time
 db.createTabs()
 
 sub = "mytestsubgoaway"
-accnt = "salad.snake"
+accnt = "matthew.fries"
 owner = "Aidgigi"
 mode = "0"
 newCon = db.createConnection(sub, accnt, owner, mode)
