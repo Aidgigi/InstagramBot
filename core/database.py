@@ -75,7 +75,7 @@ class mainDB:
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
         #our sub/account connection table
-        class accntCon(self.Base):
+        """class accntCon(self.Base):
             __tablename__ = "SUB_ACCOUNT_CONNECTION"
 
             id = Column(Integer, primary_key = True)
@@ -88,7 +88,7 @@ class mainDB:
             premium = Column(Boolean)
 
             def repr(self):
-                return f'SubCon Model {self.id}'
+                return f'SubCon Model {self.id}' """
 
         #creating a unique ID for the connection
         idMin = 11111111
@@ -172,7 +172,7 @@ class mainDB:
     def updateTable(self, conn_id, previousPost, postCount):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
-        class accntCon(self.Base):
+        """class accntCon(self.Base):
             __tablename__ = "SUB_ACCOUNT_CONNECTION"
 
             id = Column(Integer, primary_key = True)
@@ -185,7 +185,7 @@ class mainDB:
             premium = Column(Boolean)
 
             def repr(self):
-                return f'SubCon Model {self.id}'
+                return f'SubCon Model {self.id}' """
 
         #getting the connection for the given id
         self.connectionTables = self.db.query(accntCon).filter_by(id = int(conn_id)).all()
