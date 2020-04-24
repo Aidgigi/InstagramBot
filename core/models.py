@@ -6,7 +6,7 @@ from core.database import db
 class accntCon(db.Base):
     __tablename__ = "SUB_ACCOUNT_CONNECTION"
 
-    id = Column(Integer, primary_key = True)
+    id = Column(BigInteger, primary_key = True)
     subreddit = Column(String)
     instagramAccountPK = Column(BigInteger)
     instagramAccountUsername = Column(String)

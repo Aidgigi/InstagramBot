@@ -80,7 +80,7 @@ class mainDB:
             previousPost = 11111111,
             owner = owner,
             postCount = 0,
-            mode = mode,
+            mode = int(mode),
             premium = False
         ))
 
