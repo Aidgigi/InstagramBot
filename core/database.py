@@ -109,7 +109,7 @@ class mainDB:
         return {"connection":{
             "id": self.connectionTable.id,
             "subreddit": self.connectionTable.subreddit,
-            "instaAccountPK": self.connectionTable.instagramAccountPK,
+            "instagramAccountPK": self.connectionTable.instagramAccountPK,
             "instagramAccountUsername": self.connectionTable.instagramAccountUsername,
             "previousPost": self.connectionTable.previousPost,
             "owner": self.connectionTable.owner,
