@@ -1,5 +1,7 @@
 import core.database as database
 from core.database import db
+from core.instagram import ig
+from core.imgur import im
 import time
 
 """The main function, basically does everything"""
@@ -14,5 +16,7 @@ newCon = db.createConnection(sub, accnt, owner, mode)
 print(newCon)
 """
 
-for conn in db.connectionsExport():
-    print(conn)
+"""
+def mainTesting(username):
+    ig
+"""

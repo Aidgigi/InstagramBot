@@ -1,8 +1,7 @@
 import requests
 import asyncio
 import json
-#import constants
-#import constants
+import constants as constants
 
 class Imgur:
     def __init__(self, client_id, client_secret):
@@ -11,7 +10,7 @@ class Imgur:
 
 
     #i mean, this function name should be pretty self-explanitory
-    async def uploadImage(self, url, title, description = None):
+    def uploadImage(self, url, title, description = None):
         #adding headers and making a request with the data we have
         headers = {"Authorization": "Client-ID {}".format(self.client_id)}
         response = requests.post(
@@ -33,6 +32,7 @@ class Imgur:
 
         else:
             print('[IMGUR] IMAGE UPLOAD FAILED')
+            return False
 
 
     #this function creates an album, and uploads each url from the url param
@@ -48,7 +48,7 @@ class Imgur:
         for image in urls:
             iteration += 1
             #cool title thing
-            imageTitle = f"Image number {iteration} of album {title}"
+            imageTitle = f"Image number {iteration} of album \"{title}\""
 
             response = requests.post(
             'https://api.imgur.com/3/upload',
@@ -85,16 +85,16 @@ class Imgur:
         #cleaning and managing the data we get back
         response.raise_for_status()
         jsonData = response.json()
-        if 'id' in jsonData:
-            return jsonData['id']
+        if 'id' in jsonData['data']:
+            return jsonData['data']
 
         else:
             print('[IMGUR] ALBUM UPLOAD FAILED')
+            return False
 
 #Making a test instance
 
 id = 'REDACTED'
 secret = 'REDACTED'
 
-
-im = Imgur(id, secret)
+im = Imgur(constants.IMGUR_CLIENT_ID, constants.IMGUR_CLIENT_SECRET)
