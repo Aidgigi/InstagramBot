@@ -41,6 +41,10 @@ class InstaAPI:
         self.iGram.getUserFeed(self.userId)
         self.userFeed = self.iGram.LastJson
         print(self.userFeed)
+        if self.userFeed['status'] == 'fail' and 'message' in self.userFeed:
+            print(f"[Instagram] Warning! Finding feed failed due to: {self.userfeed['message']}")
+            return 0
+
         if self.userFeed['num_results'] == 0:
             print(f"[INSTAGRAM] Warning! Feed of user {targetUsername} is empty!")
             return False
