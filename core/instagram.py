@@ -64,6 +64,7 @@ class InstaAPI:
         if self.connection != False:
             self.recentPost = self.connection['connection']['previousPost']
             self.targetPk = self.connection['connection']['instagramAccountPK']
+            self.targetUsername = self.connection['connection']['instagramAccountUsername']
 
         if self.connection == False:
             print("[INSTAGRAM] Warning! Failed due to above error!")
