@@ -133,7 +133,7 @@ class mainDB:
             print(f"[DATABASE] Fatal Error! Multiple connections have been found with ID {conn_id}. Investigation needed!")
             return False
 
-        if len(self.connectionTable) == 1:
+        if len(self.connectionTables) == 1:
             self.connectionTable = self.connectionTables[0]
 
         try:
