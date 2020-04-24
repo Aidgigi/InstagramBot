@@ -40,7 +40,6 @@ class InstaAPI:
 
         self.iGram.getUserFeed(self.userId)
         self.userFeed = self.iGram.LastJson
-        print(self.userFeed)
         if self.userFeed['status'] == 'fail' and 'message' in self.userFeed:
             print(f"[Instagram] Warning! Finding feed failed due to: {self.userfeed['message']}")
             return 0
@@ -91,7 +90,7 @@ class InstaAPI:
                     self.urlOut.append(slide['image_versions2']['candidates'][0]['url'])
 
         if 'carousel_media' not in self.accountFeed['items'][0]:
-            if slide['media_type'] == 1:
+            if self.accountFeed['items'][0]['media_type'] == 1:
                 self.urlOut.append(self.accountFeed['items'][0]['image_versions2']['candidates'][0]['url'])
 
         """Now, we do something with our data"""
