@@ -21,7 +21,8 @@ def mainTesting():
     time.sleep(5)
 
     if image != False:
-        print(image)
+        if image != []:
+            print(image)
 
 while True:
     mainTesting()
