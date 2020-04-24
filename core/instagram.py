@@ -2,7 +2,7 @@ from InstagramAPI import InstagramAPI
 from core.imgur import im
 import asyncio
 import codecs
-import core.constants
+import core.constants as constants
 
 #this class makes communicating with instagram api straightforward
 class InstaAPI:
