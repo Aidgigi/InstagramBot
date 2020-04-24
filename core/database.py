@@ -85,7 +85,7 @@ class mainDB:
         ))
 
         self.db.commit()
-        print(f"[DATABASE] Message! Connect with ID {randomId} has been created!")
+        print(f"[DATABASE] Message! Connection with ID {randomId} has been created!")
         return randomId
 
     def returnConnection(self, conn_id):

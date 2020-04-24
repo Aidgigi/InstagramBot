@@ -76,7 +76,7 @@ class InstaAPI:
             return False
 
         if self.recentPost == self.accountRecentPost:
-            print(f"[INSTAGRAM] Message! No new posts were found for user {targetUsername}")
+            #print(f"[INSTAGRAM] Message! No new posts were found for user {targetUsername}")
             return self.urlOut
 
         if 'carousel_media' in self.accountFeed['items'][0]:
