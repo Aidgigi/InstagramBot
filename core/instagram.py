@@ -95,7 +95,7 @@ class InstaAPI:
 
         """Now, we do something with our data"""
         #making a title
-        self.postTitle = f"New post from Instagram user @{self.connection['instagramAccountUsername']} for r/{self.connection['subreddit']}"
+        self.postTitle = f"New post from Instagram user @{self.connection['connection']['instagramAccountUsername']} for r/{self.connection['connection']['subreddit']}"
         #getting the caption
         if 'caption' in self.accountFeed['items'][0]:
             if self.accountFeed['items'][0]['caption'] != '':
