@@ -38,7 +38,7 @@ class InstaAPI:
             print(f"[INSTAGRAM] Warning! Unable to get feed of user {targetUsername} due to above error!")
             return False
 
-        self.iGram.getUserFeed(userId)
+        self.iGram.getUserFeed(self.userId)
         self.userFeed = self.iGram.LastJson
         if self.userFeed['num_results'] == 0:
             print(f"[INSTAGRAM] Warning! Feed of user {targetUsername} is empty!")
