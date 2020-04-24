@@ -9,7 +9,7 @@ import operator
 import json
 import random
 import core.constants #the module containing all of the various credentials we may need
-from instagram import ig
+from core.instagram import ig
 
 
 """This class represents the main db, and everything it may need to do"""

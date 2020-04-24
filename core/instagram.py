@@ -1,6 +1,6 @@
 from InstagramAPI import InstagramAPI
-from database import db
-from imgur import im
+from core.database import db
+from core.imgur import im
 import asyncio
 import codecs
 import core.constants
