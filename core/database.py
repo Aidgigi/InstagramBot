@@ -110,7 +110,7 @@ class mainDB:
             "id": self.connectionTable.id,
             "subreddit": self.connectionTable.subreddit,
             "instaAccountPK": self.connectionTable.instagramAccountPK,
-            "instagramAccountUsername": instagramAccountUsername,
+            "instagramAccountUsername": self.connectionTable.instagramAccountUsername,
             "previousPost": self.connectionTable.previousPost,
             "owner": self.connectionTable.owner,
             "postCount": self.connectionTable.postCount,
