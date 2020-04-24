@@ -59,6 +59,7 @@ class InstaAPI:
         self.urlOut = []
 
         #getting the pk of the most recent post checked
+        from core.database import db
         self.connection = db.returnConnection(conn_id)
         if self.connection != False:
             self.recentPost = self.connection['previousPost']
@@ -108,7 +109,6 @@ class InstaAPI:
             image = im.uploadAlbum(self.urlOut, self.postTitle, self.postCaption)
 
         #updating the database with some info
-        from core.database import db
         db.updateTable(self.connection['id'], self.accountRecentPost, 1)
 
         #formatting and returning a link
