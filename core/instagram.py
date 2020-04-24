@@ -116,7 +116,7 @@ class InstaAPI:
             image = im.uploadAlbum(self.urlOut, self.postTitle, self.postCaption)
 
         #updating the database with some info
-        db.updateTable(self.connection['id'], self.accountRecentPost, 1)
+        db.updateTable(self.connection['connection']['id'], self.accountRecentPost, 1)
 
         #formatting and returning a link
         if 'link' in image:
