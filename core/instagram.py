@@ -99,7 +99,7 @@ class InstaAPI:
         #getting the caption
         if 'caption' in self.accountFeed['items'][0]:
             if self.accountFeed['items'][0]['caption'] != None:
-                self.preCap = self.accountFeed['items'][0]['caption'].encode("utf-8").decode("utf-8")
+                self.preCap = str(self.accountFeed['items'][0]['caption']['text']).encode("utf-8").decode("utf-8")
                 self.postCaption = f"Caption from post: \"{self.preCap}\""
             else:
                 self.postCaption = "This post didn't have a caption."
