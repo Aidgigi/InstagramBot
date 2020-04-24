@@ -40,6 +40,7 @@ class InstaAPI:
 
         self.iGram.getUserFeed(self.userId)
         self.userFeed = self.iGram.LastJson
+        print(self.userFeed)
         if self.userFeed['num_results'] == 0:
             print(f"[INSTAGRAM] Warning! Feed of user {targetUsername} is empty!")
             return False
