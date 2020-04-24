@@ -9,6 +9,7 @@ import operator
 import json
 import random
 import core.constants as constants #the module containing all of the various credentials we may need
+from core.instagram import ig
 
 
 """This class represents the main db, and everything it may need to do"""
@@ -63,11 +64,18 @@ class mainDB:
             if len(self.db.query(accntCon).filter_by(id = int(randomId)).all()) != 0:
                 loopState = True
 
+        #getting the instagram account's pk
+        instaAccountPK = ig.returnId(instaAccount)
+
+        if instaAccountPK == False:
+            print("[DATABASE] Warning! Account could not be added due to above error!")
+            return 0
+
         #adding the connection
         self.db.add(accntCon(
             id = randomId,
             subreddit = subreddit,
-            instagramAccount = instaAccount,
+            instagramAccountPK = instaAccount,
             previousPost = 'xxxxxx',
             owner = owner,
             postCount = 0,
@@ -100,7 +108,7 @@ class mainDB:
         return {"connection":{
             "id": self.connectionTable.id,
             "subreddit": self.connectionTable.subreddit,
-            "instaAccount": self.connectionTable.instaAccount,
+            "instaAccountPK": self.connectionTable.instaAccountPK,
             "previousPost": self.connectionTable.previousPost,
             "owner": self.connectionTable.owner,
             "postCount": self.connectionTable.postCount,
