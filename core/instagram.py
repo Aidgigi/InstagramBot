@@ -62,8 +62,8 @@ class InstaAPI:
         from core.database import db
         self.connection = db.returnConnection(conn_id)
         if self.connection != False:
-            self.recentPost = self.connection['previousPost']
-            self.targetPk = self.connection['instagramAccount']
+            self.recentPost = self.connection['connection']['previousPost']
+            self.targetPk = self.connection['connection']['instagramAccount']
 
         if self.connection == False:
             print("[INSTAGRAM] Warning! Failed due to above error!")
