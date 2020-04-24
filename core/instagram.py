@@ -101,6 +101,9 @@ class InstaAPI:
             if self.accountFeed['items'][0]['caption'] != None:
                 self.preCap = self.accountFeed['items'][0]['caption'].encode("utf-8").decode("utf-8")
                 self.postCaption = f"Caption from post: \"{self.preCap}\""
+            else:
+                self.postCaption = "This post didn't have a caption."
+
 
         if len(self.urlOut) == 0:
             print("[INSTAGRAM] Warning! Program recevied empty out list! Quitting!")
