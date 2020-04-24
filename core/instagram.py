@@ -54,7 +54,7 @@ class InstaAPI:
 
     #this function checks if there are any new images from a given account
     #and if so, uploads that image and returns the imgur URL
-    async def getAndUpload(self, conn_id):
+    def getAndUpload(self, conn_id):
         #blank list that will eventually hold our url[s]
         self.urlOut = []
 
