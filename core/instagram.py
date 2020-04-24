@@ -28,11 +28,11 @@ class InstaAPI:
 
 
     def getRecentImages(self, targetUsername):
-        if self.instaId == False:
-            return False
-
         #getting the user id, getting the feed, formatting, and returning the most recent pk
         self.userId = self.returnId(targetUsername)
+        if self.userId == False:
+            return False
+
 
         if self.userId == False:
             print(f"[INSTAGRAM] Warning! Unable to get feed of user {targetUsername} due to above error!")
