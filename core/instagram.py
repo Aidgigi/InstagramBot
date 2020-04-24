@@ -1,5 +1,4 @@
 from InstagramAPI import InstagramAPI
-from core.database import db
 from core.imgur import im
 import asyncio
 import codecs
@@ -109,6 +108,7 @@ class InstaAPI:
             image = im.uploadAlbum(self.urlOut, self.postTitle, self.postCaption)
 
         #updating the database with some info
+        from core.database import db
         db.updateTable(self.connection['id'], self.accountRecentPost, 1)
 
         #formatting and returning a link
