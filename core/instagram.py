@@ -70,7 +70,7 @@ class InstaAPI:
             return False
 
         #getting the account's most recent post (from instagram)
-        self.accountFeed = getRecentImages(self.targetUsername)
+        self.accountFeed = self.getRecentImages(self.targetUsername)
         self.accountRecentPost = self.accountFeed['items'][0]['pk']
         if self.accountRecentPost == False:
             print("[INSTAGRAM] Warning! Returning recent image failed due to above error!")
