@@ -8,7 +8,7 @@ import time
 import operator
 import json
 import random
-import constants #the module containing all of the various credentials we may need
+import core.constants #the module containing all of the various credentials we may need
 from instagram import ig
 
 

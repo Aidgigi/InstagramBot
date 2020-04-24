@@ -1,7 +1,7 @@
 import requests
 import asyncio
 import json
-import constants as constants
+import core.constants as constants
 
 class Imgur:
     def __init__(self, client_id, client_secret):

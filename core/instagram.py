@@ -3,7 +3,7 @@ from database import db
 from imgur import im
 import asyncio
 import codecs
-import constants
+import core.constants
 
 #this class makes communicating with instagram api straightforward
 class InstaAPI:
