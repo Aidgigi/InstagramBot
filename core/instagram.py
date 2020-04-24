@@ -28,7 +28,7 @@ class InstaAPI:
 
 
     def getRecentImages(self, targetUsername):
-        self.instaId = returnId(targetUsername)
+        self.instaId = self.returnId(targetUsername)
         if self.instaId == False:
             return False
 
