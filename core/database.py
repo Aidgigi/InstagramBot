@@ -77,7 +77,7 @@ class mainDB:
             subreddit = subreddit,
             instagramAccountPK = instaAccountPK,
             instagramAccountUsername = instaAccount,
-            previousPost = 'xxxxxx',
+            previousPost = 11111111,
             owner = owner,
             postCount = 0,
             mode = mode,

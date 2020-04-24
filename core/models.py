@@ -8,9 +8,9 @@ class accntCon(db.Base):
 
     id = Column(Integer, primary_key = True)
     subreddit = Column(String)
-    instagramAccountPK = Column(Integer)
+    instagramAccountPK = Column(BigInteger)
     instagramAccountUsername = Column(String)
-    previousPost = Column(String)
+    previousPost = Column(BigInteger)
     owner = Column(String)
     postCount = Column(Integer)
     mode = Column(Integer)
