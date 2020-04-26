@@ -102,6 +102,7 @@ class InstaAPI:
                 self.preCap = str(self.accountFeed['items'][0]['caption']['text']).encode("utf-8").decode("utf-8")
                 self.postCaption = f"Caption from post: \"{self.preCap}\""
             else:
+                self.preCap = "This post didn't have a caption."
                 self.postCaption = "This post didn't have a caption."
 
 
@@ -120,9 +121,11 @@ class InstaAPI:
 
         #formatting and returning a link
         if 'link' in image:
+            red.uploadToSub(image['link'], self.preCap, conn_id)
             return image['link']
 
         if 'id' in image:
+            red.uploadToSub(f"https://imgur.com/a/{image['id']}", self.preCap, conn_id)
             return f"https://imgur.com/a/{image['id']}"
 
 

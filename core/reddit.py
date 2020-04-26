@@ -1,6 +1,7 @@
 import praw
 from core.instagram import ig
 from core.database import db
+from core.reddit import red
 import core.constants as constants
 
 from prawcore.exceptions import RequestException, Forbidden, ServerError
@@ -80,3 +81,5 @@ class RedditClass:
             if self.mode == 3 or self.mode == 4:
                 if self.postComment:
                     self.postComment.lock()
+
+red = RedditClass(constants.REDDIT_CLIENT_ID, constants.REDDIT_CLIENT_SECRET, constants.REDDIT_PASSWORD, constants.REDDIT_USER_AGENT, constants.REDDIT_USERNAME)
