@@ -1,7 +1,5 @@
 import praw
-from core.instagram import ig
 from core.database import db
-from core.reddit import red
 import core.constants as constants
 
 from prawcore.exceptions import RequestException, Forbidden, ServerError
