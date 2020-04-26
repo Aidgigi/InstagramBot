@@ -12,7 +12,7 @@ class RedditClass:
                     client_secret = client_secret,
                     password = password,
                     user_agent = user_agent,
-                    username = user_name)
+                    username = username)
 
         print("\'Reddit\' instance initialized!")
 
