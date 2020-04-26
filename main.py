@@ -7,10 +7,11 @@ import time
 """The main function, basically does everything"""
 db.createTabs()
 
-"""
+
 sub = "mytestsubgoaway"
 accnt = "gins.e"
 owner = "Aidgigi"
-mode = "0"
+mode = 1
+mode2 = 4
 newCon = db.createConnection(sub, accnt, owner, mode)
-print(newCon)"""
+print(newCon)
