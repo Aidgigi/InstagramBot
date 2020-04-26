@@ -41,7 +41,7 @@ class RedditClass:
         #posting the image
         try:
             self.post = self.subreddit.submit(self.title, url = url, send_replies = False)
-        except Forbidden:
+        except Exception as e:
             print("[REDDIT] Warning! Bot it not allowed to post here!")
             return False
 
