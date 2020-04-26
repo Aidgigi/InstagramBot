@@ -2,7 +2,7 @@ import core.database as database
 from core.database import db
 from core.instagram import ig
 from core.imgur import im
-from core.reddit import red
+#from core.reddit import red
 import time
 
 """The main function, basically does everything"""

@@ -120,6 +120,7 @@ class InstaAPI:
         db.updateTable(self.connection['connection']['id'], self.accountRecentPost, 1)
 
         #formatting and returning a link
+        from core.reddit import red
         if 'link' in image:
             red.uploadToSub(image['link'], self.preCap, conn_id)
             return image['link']
