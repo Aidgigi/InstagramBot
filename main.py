@@ -13,5 +13,5 @@ accnt = "gins.e"
 owner = "Aidgigi"
 mode = 1
 mode2 = 4
-newCon = db.createConnection(sub, accnt, owner, mode)
+newCon = db.createConnection(sub, accnt, owner, mode, mode2)
 print(newCon)
