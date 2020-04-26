@@ -1,0 +1,15 @@
+instaredditbot modes:
+
+#1 — Regular posting
+#2 — Stickied post, will remain stickied until manually removed. Requires bot to be added as mod.
+#3 — Locked post. Requires bot to be added as mod.
+#4 — Locked and stickied. Read #2 and #4 for a description.
+
+optional modes:
+(if mode 1 is set to 2, the comment will be stickied.
+if set to 2 or 3, the comment will be locked and stickied.)
+
+#1 — None.
+#2 — Bot will comment the Instagram post's caption.
+#3 — Bot will comment a link to the Instagram post.
+#4 — Bot will comment both the post's caption as well as a link.

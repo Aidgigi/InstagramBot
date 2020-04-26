@@ -14,6 +14,7 @@ class accntCon(db.Base):
     owner = Column(String)
     postCount = Column(Integer)
     mode = Column(Integer)
+    mode2 = Column(Integer)
     premium = Column(Boolean)
 
     def repr(self):

@@ -40,7 +40,7 @@ class mainDB:
         print('[DATABASE] Tables Created!')
         return True
 
-    def createConnection(self, subreddit, instaAccount, owner, mode):
+    def createConnection(self, subreddit, instaAccount, owner, mode, mode2):
         #reflecting the db locally
         self.meta.reflect(bind = self.engine)
 
@@ -81,6 +81,7 @@ class mainDB:
             owner = owner,
             postCount = 0,
             mode = int(mode),
+            mode2 = int(mode2),
             premium = False
         ))
 
@@ -115,6 +116,7 @@ class mainDB:
             "owner": self.connectionTable.owner,
             "postCount": self.connectionTable.postCount,
             "mode": self.connectionTable.mode,
+            "mode2": self.connectionTable.mode2,
             "premium": self.connectionTable.premium
         }}
 

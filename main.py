@@ -14,15 +14,3 @@ owner = "Aidgigi"
 mode = "0"
 newCon = db.createConnection(sub, accnt, owner, mode)
 print(newCon)"""
-
-
-def mainTesting():
-    image = ig.getAndUpload(97774793)
-    time.sleep(5)
-
-    if image != False:
-        if image != []:
-            print(image)
-
-while True:
-    mainTesting()
