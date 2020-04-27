@@ -106,12 +106,11 @@ class RedditClass:
             if 'register' in self.message.subject:
                 if ';' not in self.message.body:
                     print("[REDDIT] Warning! Improperly fomatted request!")
-                    self.message.reply(textwrap.dedent(f"""Sorry u/{self.message.author}, but your request appears to be improperly formatted.
-                    Please, add parameters and seperate them by semicolons (\";\") and try again."""))
+                    self.message.reply(textwrap.dedent(f"""Sorry u/{self.message.author}, but your request appears to be improperly formatted. Please, add parameters and seperate them by semicolons (\";\") and try again."""))
                     return False
 
                 if ';' in self.message.body:
-                    self.contents = self.message.split(';')
+                    self.contents = self.message.body.split(';')
                     print(self.contents)
 
 
