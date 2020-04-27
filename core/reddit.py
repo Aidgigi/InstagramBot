@@ -87,9 +87,15 @@ class RedditClass:
         self.unreadInbox = []
 
         for item in self.reddit.inbox.unread(limit = None):
-            print(repr(item))
+            #appending the list and reading it
             self.unreadInbox.append(item)
             self.reddit.inbox.mark_read(self.unreadInbox)
+            self.unreadInbox = []
+
+            #checking if the item is a message
+            print(item)
+
+
 
 
 red = RedditClass(constants.REDDIT_CLIENT_ID, constants.REDDIT_CLIENT_SECRET, constants.REDDIT_PASSWORD, constants.REDDIT_USER_AGENT, constants.REDDIT_USERNAME)
