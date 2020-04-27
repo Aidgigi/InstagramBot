@@ -93,7 +93,17 @@ class RedditClass:
             self.unreadInbox = []
 
             #checking if the item is a message
-            print(item)
+            if 'Message' not in repr(item):
+                print(f"[REDDIT] Warning! Item {item} is not a message!")
+                return False
+
+            if 'SubredditMessage' in repr(item):
+                print(f"[REDDIT] Warning! Item {item} is not a message!")
+                return False
+
+            #checks passed, getting message item
+            self.message = item
+            print(self.message.subject)
 
 
 
