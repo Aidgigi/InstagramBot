@@ -108,6 +108,7 @@ class InstaAPI:
 
         if len(self.urlOut) == 0:
             print("[INSTAGRAM] Warning! Program recevied empty out list! Quitting!")
+            db.updateTable(self.connection['connection']['id'], self.accountRecentPost, 0)
             return 0
 
         if len(self.urlOut) == 1:
