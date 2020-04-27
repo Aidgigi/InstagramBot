@@ -1,0 +1,30 @@
+Step 1:
+  Read about the bot's modes here: xxx
+  If the bot needs special permissions—like in the case of modes 2, 3, or 4
+  add them before messaging the bot.
+
+  Note! You will need to moderate the subreddit you wish to add the bot to.
+
+Step 2:
+  Send a message (not one of the new DMs) to the bot. Below are instructions:
+    a. In the subject, include only the word 'register'
+    b. In the body, write the subreddit you wish to add the bot to, WITHOUT the "r/".
+    d. After that, add a semicolon (;). DO NOT add a space after the semicolon.
+    e. After the semicolon, write the Instagram account you wish to add (no @).
+    f. Repeat step d.
+    g. Add your desired mode, a semicolon, followed by your desired mode2, and a semicolon.
+
+    Here is an example message body: "copypasta;salad.snake;1;4;"
+
+    h. Once your message follows the format, hit submit. If all goes well, you will receive
+    a confirmation message; and the most recent post from the linked Instagram post will be
+    submitted on your subreddit. If the request fails, a message will be sent telling you
+    what went wrong, fix the problem and submit a new request.
+
+Note:
+  - Each subreddit can only have one Instagram account linked to it for free. If you wish to
+  add multiple—or even unlimited—accounts to your subreddit, please contact u/Aidgigi about
+  getting a premium subscription to InstaRedditBot.
+
+  - If you wish to have the connection to your subreddit deleted, contact u/Aidgigi to delete
+  the connection.

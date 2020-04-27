@@ -1,4 +1,4 @@
-import praw
+import praw, textwrap
 from core.database import db
 import core.constants as constants
 
@@ -103,7 +103,16 @@ class RedditClass:
 
             #checks passed, getting message item
             self.message = item
-            print(self.message.subject)
+            if 'register' in self.message.subject:
+                if ';' not in self.message.body:
+                    print("[REDDIT] Warning! Improperly fomatted request!")
+                    self.message.reply(textwrap.dedent(f"""Sorry u/{self.message.author}, but your request appears to be improperly formatted.
+                    Please, seperate your parameters by semicolons (\";\") and try again.""")
+                    return False
+
+                if ';' in self.message.body:
+                    self.contents = self.message.split(';')
+                    print(self.contents)
 
 
 
