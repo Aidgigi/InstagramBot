@@ -2,6 +2,7 @@ import core.database as database
 from core.database import db
 from core.instagram import ig
 from core.imgur import im
+from core.reddit import red
 #from core.reddit import red
 import time
 
@@ -18,11 +19,6 @@ newCon = db.createConnection(sub, accnt, owner, mode, mode2)
 print(newCon)
 """
 
-def mainFn(conn_id):
-    image = ig.getAndUpload(conn_id)
-    if image != []:
-        print(image)
-
 while True:
-    mainFn(17194749)
+    red.register()
     time.sleep(5)
