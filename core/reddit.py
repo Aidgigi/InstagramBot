@@ -109,9 +109,45 @@ class RedditClass:
                     self.message.reply(textwrap.dedent(f"""Sorry u/{self.message.author}, but your request appears to be improperly formatted. Please, add parameters and seperate them by semicolons (\";\") and try again."""))
                     return False
 
+                #checking if the request has valid parameters
                 if ';' in self.message.body:
                     self.contents = self.message.body.split(';')
-                    print(self.contents)
+                    del self.contents[-1]
+
+                    #checking the amount of parameters
+                    if len(self.contents) <= 3:
+                        print("[REDDIT] Warning! To many args in request!")
+                        self.message.reply(textwrap.dedent(f"Sorry u/{self.message.author}, but your request didn't have enough arguments. Please add the correct, properly formatted parameters."))
+                        return False
+
+                    if len(self.contents) > 4:
+                        print("[REDDIT] Warning! To many args in request!")
+                        self.message.reply(textwrap.dedent(f"Sorry u/{self.message.author}, but your request had too many arguments. Please add the correct, properly formatted parameters."))
+                        return False
+
+                    #length check passed, checking every arg
+                    if len(self.contents) == 4:
+                        #getting the subreddit and checking if the user is a mod there
+                        try:
+                            self.subreddit = self.reddit.subreddit(self.contents[0])
+                        except Exception as e:
+                            print("[REDDIT] Warning! Cannot find subreddit!")
+                            self.message.reply(textwrap.dedent(f"""Sorry u/{self.message.author}, but I cannot find a subreddit with the name r/{self.contents[0]}.\r
+                            \rThe subreddit may be banned, locked to me, or may not exist. If your subreddit is private, I will need to be added as an approved user or moderator in order to see it."""))
+                            return False
+
+                        #got the sub, checking if user is a mod there
+                        if self.message.author not in self.subreddit.moderator():
+                            print(f"[REDDIT] Warning! {self.message.author} does not moderate r/{self.subreddit}!")
+                            self.message.reply(textwrap.dedent(f"Sorry u/{self.message.author}, but you do not moderate r/{self.subreddit}"))
+                            return False
+
+                        if self.message.author in self.subreddit.moderator():
+                            for moderator in self.subreddit.moderator():
+                                print(f"{moderator}: {moderator.mod_permissions}")
+
+
+
 
 
 
