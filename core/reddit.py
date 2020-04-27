@@ -80,4 +80,16 @@ class RedditClass:
                 if self.postComment:
                     self.postComment.lock()
 
+
+    #this function is involed with registering the user
+    def register(self):
+        #making and unread messages list
+        self.unreadInbox = []
+
+        for item in self.reddit.inbox.unread(limit = None):
+            print(repr(item))
+            self.unreadInbox.append(item)
+            self.reddit.inbox.mark_read(self.unreadInbox)
+
+
 red = RedditClass(constants.REDDIT_CLIENT_ID, constants.REDDIT_CLIENT_SECRET, constants.REDDIT_PASSWORD, constants.REDDIT_USER_AGENT, constants.REDDIT_USERNAME)
