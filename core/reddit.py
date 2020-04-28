@@ -145,7 +145,7 @@ class RedditClass:
                         if self.message.author in self.subreddit.moderator():
                             #here we check every mod if they are the user, and check what perms they have
                             for moderator in self.subreddit.moderator():
-                                if moderator == self.message.author and moderator.mod_permissions[0] == 'all'
+                                if moderator == self.message.author and moderator.mod_permissions[0] == 'all':
                                     self.isFullMod = True
 
                             #user isnt a full mod
