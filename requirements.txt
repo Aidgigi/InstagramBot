@@ -1,6 +1,7 @@
 # BOT DEPENDENCIES #
 
-praw==6.5.1				# base package to run
-sqlalchemy
-psycopg2
-InstagramApi
+praw==6.5.1				# base package to run, the reddit api wrapper
+sqlalchemy        # package for interfacing with the postgresql database
+psycopg2          # database stuff
+InstagramApi      # the instagram api
+timeloop          # time shit

@@ -3,22 +3,20 @@ from core.database import db
 from core.instagram import ig
 from core.imgur import im
 from core.reddit import red
+from core.thread import Thread
 #from core.reddit import red
-import time
+import time, asyncio
 
-"""The main function, basically does everything"""
+"""Creating tables, defining the main function, and starting the thread!"""
 db.createTabs()
 
-"""
-sub = "mytestsubgoaway"
-accnt = "gins.e"
-owner = "Aidgigi"
-mode = 1
-mode2 = 4
-newCon = db.createConnection(sub, accnt, owner, mode, mode2)
-print(newCon)
-"""
-
-while True:
+#our main function. really! thats it!
+async def mainFn():
     red.register()
-    time.sleep(1)
+    asyncio.sleep(1)
+
+#running the stuff
+if __name__ == "__main__":
+	Thread.start()
+	asyncio.run(mainFn())
+	Thread.stop()

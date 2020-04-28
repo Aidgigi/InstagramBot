@@ -162,7 +162,7 @@ class mainDB:
         self.connections = self.db.query(accntCon).all()
 
         if len(self.connections) == 0:
-            print("[DATABASE] Warning! There are no rows present in the system!")
+            #print("[DATABASE] Warning! There are no rows present in the system!")
             return False
 
         for row in self.connections:
