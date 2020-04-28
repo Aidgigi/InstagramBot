@@ -143,8 +143,52 @@ class RedditClass:
                             return False
 
                         if self.message.author in self.subreddit.moderator():
+                            #here we check every mod if they are the user, and check what perms they have
                             for moderator in self.subreddit.moderator():
-                                print(f"{moderator}: {moderator.mod_permissions}")
+                                if moderator == self.message.author and moderator.mod_permissions[0] == 'all'
+                                    self.isFullMod = True
+
+                            #user isnt a full mod
+                            if not self.isFullMod:
+                                print(f"[REDDIT] Warning! User {self.message.author} is not a full moderator of r/{self.subreddit}.")
+                                self.message.reply(textwrap.dedent(f"Sorry u/{self.message.author}, but you are not a full moderator or r/{self.subreddit}."))
+                                return False
+
+                    #the first checks have passed, checking the instagram account
+                    if self.isFullMod and self.isFullMod == True:
+                        #importing instagram to avoid circular imports
+                        from core.instagram import ig
+                        if ig.returnId(self.contents[1]) == False:
+                            self.message.reply(textwrap.dedent(f"Sorry u/{self.message.author}, but the Instagram account @{self.contents[1]} does not exist. Please submit a new request with a valid Instagram account."))
+                            return False
+
+                        #instagram account exists and isn't private, moving on
+                        else:
+                            #checking our mods
+                            if any(call in str(self.contents[2]) for call in ['1', '2', '3', '4']) == False and any(call in str(self.contents[3]) for call in ['1', '2', '3', '4']) == False:
+                                print(f"[REDDIT] Warning! Mode argument out of range!")
+                                self.message.reply(textwrap.dedent(f"Sorry u/{self.message.author}, but one of your mode arguments is out of range. Please select 1, 2, 3, or 4 for your mode and mode2."))
+                                return False
+
+                            #it passed the checks
+                            if any(arg in str(self.contents[2]) for arg in ['1', '2', '3', '4']) and any(arg in str(self.contents[3]) for arg in ['1', '2', '3', '4']):
+                                print(f"[REDDIT] Message! User u/{self.message.author} has registered @{self.contents[1]} with subreddit r/{self.subreddit}.")
+                                #adding to the db, and checking if it was successful!
+                                self.newConnection = db.createConnection(str(self.subreddit), str(self.contents[1]), str(self.message.author), int(self.contents[2]), int(self.contents[3]))
+
+                                #account already connected to subreddit
+                                if self.newConnection == False or self.newConnection == 0:
+                                    print(f"[REDDIT] Warning! Request failed due to above error!")
+                                    self.message.reply(textwrap.dedent(f"""Sorry u/{self.message.author}, but your request cannot be completed. This is because an Instagram account has already been connection to r/{self.subreddit}.\r
+                                    \rIf you would like to connect another account to r/{self.subreddit}, contact u/Aidgigi in order to purchase InstaRedditBot premium."""))
+                                    return False
+
+                                #account not connected
+                                if self.newConnection:
+                                    print(f"[REDDIT] Message! u/{self.message.author} has connected @{self.contents[1]} to r/{self.subreddit} with connection ID {self.newConnection}!")
+                                    self.message.reply(textwrap.dedent(f"Thank you u/{self.message.author}! Instagram account [@{self.contents[1]}](https://www.instagram.com/{self.contents[1]}/) has been successfully connected to r/{self.subreddit}!"))
+                                    return True
+
 
 
 
