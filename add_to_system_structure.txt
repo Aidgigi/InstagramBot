@@ -4,6 +4,7 @@ Step 1:
   add them before messaging the bot.
 
   Note! You will need to moderate the subreddit you wish to add the bot to.
+  Note! The bot's reddit account is u/InstaRedditBot
 
 Step 2:
   Send a message (not one of the new DMs) to the bot. Below are instructions:
