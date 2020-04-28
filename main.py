@@ -12,8 +12,9 @@ db.createTabs()
 
 #our main function. really! thats it!
 async def mainFn():
-    red.register()
-    await asyncio.sleep(1)
+    while True:
+        red.register()
+        await asyncio.sleep(1)
 
 #running the stuff
 if __name__ == "__main__":
