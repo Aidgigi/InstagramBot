@@ -172,7 +172,17 @@ class RedditClass:
 
                             #it passed the checks
                             if any(arg in str(self.contents[2]) for arg in ['1', '2', '3', '4']) and any(arg in str(self.contents[3]) for arg in ['1', '2', '3', '4']):
-                                print(f"[REDDIT] Message! User u/{self.message.author} has registered @{self.contents[1]} with subreddit r/{self.subreddit}.")
+                                #checking if the bot is a mod
+                                for moderator in self.subreddit.moderator():
+                                    if moderator == 'InstaRedditBot' and any(arg in str(moderator) for arg in ['all', 'post']):
+                                        self.botIsMod = True
+
+                                if not self.botIsMod any(arg in str(self.contents[2]) for arg in ['2', '3', '4']):
+                                    print(f"[REDDIT] Warning! Mode requires bot to be added as moderator!")
+                                    self.message.reply(textwrap.dedent(f"""Sorry u/{self.message.author}, but you have selected mode {self.contents[2]}, which requires the bot to be added as a moderator.\r
+                                    \rPlease, add u/InstaRedditBot as a moderator with \"Post\" permissions, and try again."""))
+                                    return False
+
                                 #adding to the db, and checking if it was successful!
                                 self.newConnection = db.createConnection(str(self.subreddit), str(self.contents[1]), str(self.message.author), int(self.contents[2]), int(self.contents[3]))
 
