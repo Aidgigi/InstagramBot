@@ -14,7 +14,7 @@ class Thread():
     @staticmethod
     def start(block=False):
         try:
-            Thread.set_format()
+            #Thread.set_format()
             timer.start(block)
         except Exception as e:
             print(e)
