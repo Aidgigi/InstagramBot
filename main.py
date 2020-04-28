@@ -21,4 +21,4 @@ print(newCon)
 
 while True:
     red.register()
-    time.sleep(5)
+    time.sleep(1)
