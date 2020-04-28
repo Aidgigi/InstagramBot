@@ -179,7 +179,7 @@ class RedditClass:
                                 else:
                                     self.botIsMod = False
 
-                                if self.botIsMod = False and any(arg in str(self.contents[2]) for arg in ['2', '3', '4']):
+                                if self.botIsMod == False and any(arg in str(self.contents[2]) for arg in ['2', '3', '4']):
                                     print(f"[REDDIT] Warning! Mode requires bot to be added as moderator!")
                                     self.message.reply(textwrap.dedent(f"""Sorry u/{self.message.author}, but you have selected mode {self.contents[2]}, which requires the bot to be added as a moderator.\r
                                     \rPlease, add u/InstaRedditBot as a moderator with \"Post\" permissions, and try again."""))
