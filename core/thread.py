@@ -6,7 +6,7 @@ from core.instagram import ig
 
 timer = Timeloop()
 
-checkTime = 30
+checkTime = 10
 
 class Thread():
     """This should check for posts ever 30 seconds"""

@@ -41,6 +41,7 @@ class RedditClass:
         #posting the image
         try:
             self.post = self.subreddit.submit(self.title, url = url, send_replies = False)
+            print(f"[REDDIT] Message! New post from @{self.instaAccount} was submitted to r/{self.subreddit} (conn_id: {conn_id}).")
         except Exception as e:
             print("[REDDIT] Warning! Bot it not allowed to post here!")
             return False
