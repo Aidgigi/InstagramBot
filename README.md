@@ -1,5 +1,5 @@
 # InstaRedditBot
-[![CodeFactor](https://www.codefactor.io/repository/github/aidgigi/instagrambot/badge/production)](https://www.codefactor.io/repository/github/aidgigi/instagrambot/overview/production)<br/>
+[![CodeFactor](https://www.codefactor.io/repository/github/aidgigi/instagrambot/badge/production)](https://www.codefactor.io/repository/github/aidgigi/instagrambot/overview/production) [![HitCount](http://hits.dwyl.com/Aidgigi/InstagramBot.svg)](http://hits.dwyl.com/Aidgigi/InstagramBot)<br/>
 A new Reddit bot that serves to make the gap between Reddit and Instagram smaller. Link an Instagram account to your subreddit, wait for the account to post, and voila, the bot posts on your subreddit. With 4 modes, and 4 submodes, how to bot posts is up to you. New features will be added often, so don't be afraid to request one now!
 
 ## Adding the Bot
