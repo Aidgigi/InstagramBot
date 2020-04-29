@@ -2,7 +2,7 @@
 A new Reddit bot that serves to make the gap between Reddit and Instagram smaller. Link an Instagram account to your subreddit, wait for the account to post, and voila, the bot posts on your subreddit. With 4 modes, and 4 submodes, how to bot posts is up to you. New features will be added often, so don't be afraid to request one now!
 
 ## Adding the Bot
-Follow the steps in order to add the bot to your subreddit!
+Some information regarding adding the bot, and its modes.
 
 ### Modes
 The bot's regular and submodes
@@ -23,6 +23,7 @@ These submodes will define how the bot comments on its posts.
 * **Note!** If the regular mode is set to 2, 3, or 4, the comment the bot leaves will follow the same sticky/lock rules.
 
 ### Steps
+How to connect the bot to your subreddit
 #### Step 1
 1. Determine which modes you would like the bot to be registered with.
 2. If the bot needs moderator privileges, as in the case of modes 2, 3, or 4, add the bot as a mod **before** submitting a request.
@@ -42,6 +43,7 @@ These submodes will define how the bot comments on its posts.
 * Each subreddit can only have one Instagram account linked to it for free. If you wish to add multiple—or even unlimited—accounts to your subreddit, please contact
 [u/Aidgigi](https://reddit.com/u/Aidgigi) about getting a premium subscription to InstaRedditBot.
 * If you wish to have the connection to your subreddit deleted, contact [u/Aidgigi](https://reddit.com/u/Aidgigi) to delete the connection.
+* Since others have asked me; no, you do not need to own the Instagram account you wish to connect your sub to. If the Instagram account is private, it also will not work, however PM me and I will manually follow the account you wish to link.
 
 ## How it Works
 
