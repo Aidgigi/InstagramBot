@@ -1,5 +1,6 @@
 #compiled shit
 __pycache__/*
+*/__pycache/*
 *.py[cod]
 
 #logs
@@ -12,4 +13,4 @@ venv/*
 passwords.txt
 
 #other things
-.git.bfg-report/
+.git.bfg-report/*
