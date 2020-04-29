@@ -41,4 +41,22 @@ These submodes will define how the bot comments on its posts.
 #### Note:
 * Each subreddit can only have one Instagram account linked to it for free. If you wish to add multiple—or even unlimited—accounts to your subreddit, please contact
 (u/Aidgigi)[https://reddit.com/u/Aidgigi] about getting a premium subscription to InstaRedditBot.
-* If you wish to have the connection to your subreddit deleted, contact /Aidgigi)[https://reddit.com/u/Aidgigi] to delete the connection.
+* If you wish to have the connection to your subreddit deleted, contact [u/Aidgigi](https://reddit.com/u/Aidgigi) to delete the connection.
+
+## How it Works
+
+### The Code
+The bot is written completely in Python, and the program performs its task through the use of modules. In the ["core"](core/) folder, you can see these modules. What they do is fairly self-explanatory. In each module, the program interfaces with its respective API. Fortunately, the [Reddit API](https://github.com/praw-dev/praw) and [Instagram API](https://pypi.org/project/InstagramAPI/) had wrappers written for them by some very cool people. However, the available Python wrappers for the Imgur API didn't suit my needs, so I wrote my own—extremely small—version. This wrapper is free to use, and distribute, and can be found in [core/imgur.py](core/imgur.py).
+
+In order to check for new posts, a few statements in core/thread.py are ran every 10 seconds. The first asks the database for a list of current connections, if there are none, this function returns False. If there are connections, we iterate through every connection, and plug its ID into a function that checks if the linked Instagram account has any new posts. If this account does, core/instagram.py fetches the post's url, tells core/imgur.py to upload it, the Imgur URL is sent back to core/instagram.py, which tells core/reddit.py to upload it to the correct subreddit. Wow, sorry for that. While this process is happening every 10 seconds, core/reddit.py is constantly because asked by main.py if the bot has any new DMs. If it does, the DM is processed—and if it's valid—will be added to the system. That's really it!
+
+### Hosting
+#### Files
+The code, along with everything needed to run, is hosted here in this repo. What you're looking at right now is legitimate production code that is running on some linux server halfway across the globe.
+#### The Program
+Now that we have free and epic file hosting from the generous corporate entity that is Github, we need to run it. The program is ran on web-hosting platform called Heroku. Currently, the bot runs on the free version of Heroku, but once people start paying for premium, I hope to upgrade to faster dynos and a better database. Please contact me on reddit (u/Aidgigi) if you would like to financially support the project.
+
+## Contributing
+Yes, I want your help.
+
+If you would like to contribute to the project, write some code, make mine better, and submit a pull request. If I like what you've done, I'll be sure to approve it. If you aren't the programming type, send me a PM on Reddit with your recommendation, and I'll add it to the bot if I like it.
