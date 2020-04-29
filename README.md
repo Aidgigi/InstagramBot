@@ -40,7 +40,7 @@ These submodes will define how the bot comments on its posts.
 
 #### Note:
 * Each subreddit can only have one Instagram account linked to it for free. If you wish to add multiple—or even unlimited—accounts to your subreddit, please contact
-(u/Aidgigi)[https://reddit.com/u/Aidgigi] about getting a premium subscription to InstaRedditBot.
+[u/Aidgigi](https://reddit.com/u/Aidgigi) about getting a premium subscription to InstaRedditBot.
 * If you wish to have the connection to your subreddit deleted, contact [u/Aidgigi](https://reddit.com/u/Aidgigi) to delete the connection.
 
 ## How it Works
