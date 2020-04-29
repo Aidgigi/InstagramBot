@@ -9,7 +9,7 @@ timer = Timeloop()
 checkTime = 10
 
 class Thread():
-    """This should check for posts ever 30 seconds"""
+    #"""This should check for posts ever 30 seconds"""
 
     @staticmethod
     def start(block=False):
@@ -44,5 +44,5 @@ async def search():
 
 @timer.job(interval=timedelta(seconds=checkTime))
 def checkForPosts():
-    """Run the process asynchronously on a timer."""
+    #"""Run the process asynchronously on a timer."""
     asyncio.run(search())

@@ -93,7 +93,7 @@ class InstaAPI:
             if self.accountFeed['items'][0]['media_type'] == 1:
                 self.urlOut.append(self.accountFeed['items'][0]['image_versions2']['candidates'][0]['url'])
 
-        """Now, we do something with our data"""
+        #"""Now, we do something with our data"""
         #making a title
         self.postTitle = f"New post from Instagram user @{self.connection['connection']['instagramAccountUsername']} for r/{self.connection['connection']['subreddit']}"
         #getting the caption

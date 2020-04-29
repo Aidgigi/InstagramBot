@@ -12,7 +12,7 @@ import core.constants as constants #the module containing all of the various cre
 from core.instagram import ig
 
 
-"""This class represents the main db, and everything it may need to do"""
+#"""This class represents the main db, and everything it may need to do"""
 class mainDB:
 
     #our init function, to get everything started
