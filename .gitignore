@@ -10,3 +10,6 @@ venv/*
 
 #passwords
 passwords.txt
+
+#other things
+.git.bfg-report/
