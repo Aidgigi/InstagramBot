@@ -26,9 +26,9 @@ class Imgur:
 
         #url is video, encoding and sending byte stream
         if '.mp4' in url or '.gif' in url:
-            self.video = base64.b64encode(requests.get(url).content)
+            #self.video = base64.b64encode(requests.get(url).content)
             self.data = {
-                'video': self.video,
+                'video': url,
                 'type': 'base64',
                 'title': title,
                 'description': description
@@ -74,12 +74,11 @@ class Imgur:
                 }
 
             if '.mp4' in url or '.gif' in url:
-                self.video = base64.b64encode(requests.get(url).content)
+                #self.video = base64.b64encode(requests.get(url).content)
                 self.data = {
-                    'video': self.video,
+                    'video': image,
                     'type': 'base64',
                     'title': title,
-                    'description': description
                 }
 
             response = requests.post(
