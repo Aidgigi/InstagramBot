@@ -29,8 +29,8 @@ class Imgur:
             self.video1 = requests.get(url).content
             self.video = "".join(["{:08b}".format(x) for x in self.video1])
             self.data = {
-                'video': url,
-                'type': 'url',
+                'video': self.video,
+                'type': 'file',
                 'title': title,
                 'description': description
             }
@@ -75,11 +75,11 @@ class Imgur:
                 }
 
             if '.mp4' in image or '.gif' in image:
-                self.video1 = requests.get(image).content
+                self.video = requests.get(image).content
                 self.video = "".join(["{:08b}".format(x) for x in self.video1])
                 self.data = {
-                    'video': image,
-                    'type': 'url',
+                    'video': self.video,
+                    'type': 'file',
                     'title': title,
                 }
 
