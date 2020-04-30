@@ -34,7 +34,6 @@ class Imgur:
                 'description': description
             }
 
-        print(self.data)
         response = requests.post(
         'https://api.imgur.com/3/upload',
         headers = headers,
