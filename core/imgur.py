@@ -29,8 +29,8 @@ class Imgur:
             self.video1 = requests.get(url).content
             self.video = "".join(["{:08b}".format(x) for x in self.video1])
             self.data = {
-                'video': self.video,
-                'type': 'file',
+                'video': url,
+                'type': 'url',
                 'title': title,
                 'description': description
             }
@@ -78,8 +78,8 @@ class Imgur:
                 self.video1 = requests.get(image).content
                 self.video = "".join(["{:08b}".format(x) for x in self.video1])
                 self.data = {
-                    'video': self.video,
-                    'type': 'file',
+                    'video': image,
+                    'type': 'url',
                     'title': title,
                 }
 
