@@ -15,30 +15,29 @@ class Imgur:
     def uploadImage(self, url, title, description = None):
         #adding headers and making a request with the data we have
         headers = {"Authorization": "Client-ID {}".format(self.client_id)}
-        response = requests.post(
-        'https://api.imgur.com/3/upload',
-        headers = headers,
         #url not video
         if '.jpg' in url or '.jpeg' in url:
-            data = {
+            self.data = {
                 'image': url,
                 'type': 'url',
                 'title': title,
                 'description': description
             }
-            )
 
         #url is video, encoding and sending byte stream
         if '.mp4' in url or '.gif' in url:
             self.video = base64.b64encode(requests.get(url).content)
-            data = {
+            self.data = {
                 'video': self.video,
                 'type': 'base64',
                 'title': title,
                 'description': description
             }
-            )
 
+        response = requests.post(
+        'https://api.imgur.com/3/upload',
+        headers = headers,
+        data = self.data)
 
 
         #cleaning and managing the data we get back
@@ -67,26 +66,26 @@ class Imgur:
             #cool title thing
             imageTitle = f"Image number {iteration} of album \"{title}\""
 
-            response = requests.post(
-            'https://api.imgur.com/3/upload',
-            headers = headers,
             if '.jpg' in image or '.jpeg' in image:
-                data = {
+                self.data = {
                     'image': image,
                     'type': 'url',
                     'title': imageTitle,
                 }
-                )
 
             if '.mp4' in url or '.gif' in url:
                 self.video = base64.b64encode(requests.get(url).content)
-                data = {
+                self.data = {
                     'video': self.video,
                     'type': 'base64',
                     'title': title,
                     'description': description
                 }
-                )
+
+            response = requests.post(
+            'https://api.imgur.com/3/upload',
+            headers = headers,
+            data = self.data)
 
             #cleaning and managing the data we get back
             response.raise_for_status()
