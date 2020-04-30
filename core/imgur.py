@@ -26,7 +26,8 @@ class Imgur:
 
         #url is video, encoding and sending byte stream
         if '.mp4' in url or '.gif' in url:
-            self.video = requests.get(url).content
+            self.video1 = requests.get(url).content
+            self.video = "".join(["{:08b}".format(x) for x in self.video1])
             self.data = {
                 'video': self.video,
                 'type': 'file',
@@ -74,7 +75,8 @@ class Imgur:
                 }
 
             if '.mp4' in image or '.gif' in image:
-                self.video = requests.get(image).content
+                self.video1 = requests.get(image).content
+                self.video = "".join(["{:08b}".format(x) for x in self.video1])
                 self.data = {
                     'video': self.video,
                     'type': 'file',
