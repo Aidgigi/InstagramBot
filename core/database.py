@@ -166,6 +166,7 @@ class mainDB:
             return False
 
         for row in self.connections:
+            print(row.id)
             self.connectionIds.append(row.id)
 
         return self.connectionIds
