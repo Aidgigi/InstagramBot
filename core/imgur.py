@@ -33,7 +33,7 @@ class Imgur:
             self.video = base64.b64encode(requests.get(url).content)
             data = {
                 'video': self.video,
-                'type': 'url',
+                'type': 'base64',
                 'title': title,
                 'description': description
             }
@@ -82,7 +82,7 @@ class Imgur:
                 self.video = base64.b64encode(requests.get(url).content)
                 data = {
                     'video': self.video,
-                    'type': 'url',
+                    'type': 'base64',
                     'title': title,
                     'description': description
                 }
