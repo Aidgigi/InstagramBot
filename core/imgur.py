@@ -1,6 +1,8 @@
 import requests
 import asyncio
 import json
+import base64
+import requests
 import core.constants as constants
 
 class Imgur:
@@ -16,13 +18,28 @@ class Imgur:
         response = requests.post(
         'https://api.imgur.com/3/upload',
         headers = headers,
-        data = {
-            'image': url,
-            'type': 'url',
-            'title': title,
-            'description': description
-        }
-        )
+        #url not video
+        if '.jpg' in url or '.jpeg' in url:
+            data = {
+                'image': url,
+                'type': 'url',
+                'title': title,
+                'description': description
+            }
+            )
+
+        #url is video, encoding and sending byte stream
+        if '.mp4' in url or '.gif' in url:
+            self.video = base64.b64encode(requests.get(url).content)
+            data = {
+                'video': self.video,
+                'type': 'url',
+                'title': title,
+                'description': description
+            }
+            )
+
+
 
         #cleaning and managing the data we get back
         response.raise_for_status()
@@ -53,12 +70,23 @@ class Imgur:
             response = requests.post(
             'https://api.imgur.com/3/upload',
             headers = headers,
-            data = {
-                'image': image,
-                'type': 'url',
-                'title': imageTitle,
-            }
-            )
+            if '.jpg' in image or '.jpeg' in image:
+                data = {
+                    'image': image,
+                    'type': 'url',
+                    'title': imageTitle,
+                }
+                )
+
+            if '.mp4' in url or '.gif' in url:
+                self.video = base64.b64encode(requests.get(url).content)
+                data = {
+                    'video': self.video,
+                    'type': 'url',
+                    'title': title,
+                    'description': description
+                }
+                )
 
             #cleaning and managing the data we get back
             response.raise_for_status()

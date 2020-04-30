@@ -88,10 +88,14 @@ class InstaAPI:
             for slide in self.accountFeed['items'][0]['carousel_media']:
                 if slide['media_type'] == 1:
                     self.urlOut.append(slide['image_versions2']['candidates'][0]['url'])
+                if slide['media_type'] == 2:
+                    self.urlOut.apped(slide['video_versions'][0]['url'])
 
         if 'carousel_media' not in self.accountFeed['items'][0]:
             if self.accountFeed['items'][0]['media_type'] == 1:
                 self.urlOut.append(self.accountFeed['items'][0]['image_versions2']['candidates'][0]['url'])
+            if self.accountFeed['items'][0]['media_type'] == 2:
+                self.urlOut.append(self.accountFeed['items'][0]['video_versions'][0]['url'])
 
         #"""Now, we do something with our data"""
         #making a title
