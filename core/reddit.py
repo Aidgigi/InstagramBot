@@ -63,13 +63,13 @@ class RedditClass:
 
         #applying mode2 settings
         if self.mode2 == 2:
-            self.postComment = self.post.reply(f"Caption: \"{caption}\"")
+            self.postComment = self.post.reply(f"Caption: \"{caption}\"\n\n^(I'm a bot! Find more information [here!](https://github.com/Aidgigi/InstagramBot))")
 
         if self.mode2 == 3:
-            self.postComment = self.post.reply(f"[Find @{self.instaAccount} on Instagram!](https://www.instagram.com/{self.instaAccount}/)")
+            self.postComment = self.post.reply(f"[Find @{self.instaAccount} on Instagram!](https://www.instagram.com/{self.instaAccount}/)\n\n^(I'm a bot! Find more information [here!](https://github.com/Aidgigi/InstagramBot))")
 
         if self.mode2 == 4:
-            self.postComment = self.post.reply(f"Caption: \"{caption}\".\n\n[Find @{self.instaAccount} on Instagram!](https://www.instagram.com/{self.instaAccount}/)")
+            self.postComment = self.post.reply(f"Caption: \"{caption}\".\n\n[Find @{self.instaAccount} on Instagram!](https://www.instagram.com/{self.instaAccount}/)\n\n^(I'm a bot! Find more information [here!](https://github.com/Aidgigi/InstagramBot))")
 
         #seeing if the new comment needs to be stickied, locked, or both.
         if self.mode2 == 2 or self.mode2 == 3 or self.mode2 == 4:
